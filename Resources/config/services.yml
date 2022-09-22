@@ -1,0 +1,10 @@
+# Services
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Esit\Cryptography\Classes\Services\Helper\CryptographyHelper:
+        arguments:
+            - "%env(CRYPTOGRAPHY_SECRECT)%"
+            - "%env(CRYPTOGRAPHY_CIPHER)%"

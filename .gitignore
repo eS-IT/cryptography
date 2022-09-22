@@ -1,0 +1,12 @@
+# .gitignore by e@sy Solutions IT
+# ===============================
+# author      pfroch <info@easySolutionsIT.de>
+# link        http://easySolutionsIT.de
+# copyright   e@sy Solutions IT 2019
+# license     EULA
+# since       05.01.19 - 16:54
+
+*.cache
+autoload*
+vendor/
+**/**/*.example
