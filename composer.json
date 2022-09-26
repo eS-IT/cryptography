@@ -17,8 +17,6 @@
     "require": {
         "php": "^8.0",
         "contao/core-bundle": "^4.9",
-        "contao/manager-bundle": "^4.9",
-        "contao/conflicts": "@dev",
         "ext-openssl": "*"
     },
     "require-dev": {

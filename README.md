@@ -17,7 +17,7 @@ __e@sy Solutions IT:__ Patrick Froch <info@easySolutionsIT.de>
 
 ## Installation
 
-Die Installation geschieht direkt aus dem Respository.
+Die Installation geschieht über den ContaoManager. Einfach nach `esit/cryptography` suchen und installieren.
 
 
 ## Einrichtung
