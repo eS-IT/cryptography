@@ -22,7 +22,7 @@ Die Installation geschieht direkt aus dem Respository.
 
 ## Einrichtung
 
-In eine `.env`-Datei müssen zwei Werte eingetragen werden, das Passwort (`CRYPTOGRAPHY_SECRECT`) und die
+In die `.env`-Datei müssen zwei Werte eingetragen werden, das Passwort (`CRYPTOGRAPHY_SECRECT`) und die
 Verschlüsselungsmethode (`CRYPTOGRAPHY_CIPHER`). Ein Beispiel sieht so aus:
 
 ```dotenv
@@ -50,10 +50,10 @@ MyClass
     {
         $value      = 'Mein geheimer Teststring!';
         $encrypted  = $this->cryptoHelper->encrypt($value);
-        $decrypted  = $this->cryptoHelper->decrypt($encrypted);
+        $decrypted  = $this->cryptoHelper->decrypt($encrypted); // $value === $decrypted
     }
 }
 ```
 
 Beide Methoden nehmen als zweiten Parameter das Passwort entgegen. So können Werte mit unterschiedlichen Passwörtern
-verschlüsselt werden, falls nicht das in der `.env`-Datei hinterlegt Standardpasswort genutzt werden soll.
+verschlüsselt werden, falls nicht das in der `.env`-Datei hinterlegte Standardpasswort verwendet werden soll.
