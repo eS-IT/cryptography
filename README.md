@@ -5,9 +5,16 @@
 
 Bei dieser Software handelt es sich um eine Erweiterung für das Open Source CMS Contao, mit der Werte ver- und entschlüsselt werden können.
 
+
 ## Autor
 
 __e@sy Solutions IT:__ Patrick Froch <info@easySolutionsIT.de>
+
+
+## Lizenz
+
+Die Software wird unter LGPL veröffentlicht. Details sind in der Datei `LICENSE` zu finden.
+
 
 ## Voraussetzungen
 
