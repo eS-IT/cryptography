@@ -5,7 +5,7 @@ test_cto4.13_php8.0:
     stage: test_cto4.13
     except:
         - tags
-    image: esit-projekt.de:5000/testsuite_cto4.13_php8.0
+    image: esit-projekt.de:5000/testsuite_cto4.13_php8.0:1.0.0
     variables:
         GIT_STRATEGY: none
         PROJECT_NAME: cryptography
@@ -21,7 +21,7 @@ test_cto4.13_php8.1:
     stage: test_cto4.13
     except:
         - tags
-    image: esit-projekt.de:5000/testsuite_cto4.13_php8.1
+    image: esit-projekt.de:5000/testsuite_cto4.13_php8.1:1.0.0
     variables:
         GIT_STRATEGY: none
         PROJECT_NAME: cryptography
@@ -37,7 +37,7 @@ test_cto4.13_php8.2:
     stage: test_cto4.13
     except:
         - tags
-    image: esit-projekt.de:5000/testsuite_cto4.13_php8.2
+    image: esit-projekt.de:5000/testsuite_cto4.13_php8.2:1.0.0
     variables:
         GIT_STRATEGY: none
         PROJECT_NAME: cryptography
