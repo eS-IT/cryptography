@@ -1,11 +1,45 @@
 stages:
-    - test
+    - test__cto4.13_php8.0
+    - test__cto4.13_php8.1
+    - test__cto4.13_php8.2
 
-runtests:
+test__cto4.13_php8.0:
     stage: test
     except:
         - tags
-    image: esit-projekt.de:5000/contao-testsuite:1.0.14
+    image: esit-projekt.de:5000/testsuite_cto4.13_php8.0
+    variables:
+        GIT_STRATEGY: none
+        PROJECT_NAME: cryptography
+    before_script:
+        - COMPOSER_MEMORY_LIMIT=-1 /usr/local/bin/composer.phar config repositories.$PROJECT_NAME vcs $PROJEKT_URL --working-dir=/htdocs/
+        - COMPOSER_MEMORY_LIMIT=-1 /usr/local/bin/composer.phar require esit/$PROJECT_NAME:dev-$CI_COMMIT_REF_NAME --working-dir=/htdocs/
+    script:
+        - cd /htdocs/vendor/esit/$PROJECT_NAME/
+        - ./build/runtests.sh
+    coverage: '/Methods: \d+\.\d+/'
+
+test__cto4.13_php8.1:
+    stage: test
+    except:
+        - tags
+    image: esit-projekt.de:5000/testsuite_cto4.13_php8.1
+    variables:
+        GIT_STRATEGY: none
+        PROJECT_NAME: cryptography
+    before_script:
+        - COMPOSER_MEMORY_LIMIT=-1 /usr/local/bin/composer.phar config repositories.$PROJECT_NAME vcs $PROJEKT_URL --working-dir=/htdocs/
+        - COMPOSER_MEMORY_LIMIT=-1 /usr/local/bin/composer.phar require esit/$PROJECT_NAME:dev-$CI_COMMIT_REF_NAME --working-dir=/htdocs/
+    script:
+        - cd /htdocs/vendor/esit/$PROJECT_NAME/
+        - ./build/runtests.sh
+    coverage: '/Methods: \d+\.\d+/'
+
+test__cto4.13_php8.2:
+    stage: test
+    except:
+        - tags
+    image: esit-projekt.de:5000/testsuite_cto4.13_php8.2
     variables:
         GIT_STRATEGY: none
         PROJECT_NAME: cryptography

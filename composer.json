@@ -12,15 +12,18 @@
         }
     ],
     "support": {
-        "email": "info@easySolutionsIT.de"
+        "email": "info@easySolutionsIT.de",
+        "issues": "https://github.com/eS-IT/cryptography/issues",
+        "docs": "https://github.com/eS-IT/cryptography/blob/main/README.md"
     },
+    "readme": "README.md",
     "require": {
-        "php": "^8.0",
-        "contao/core-bundle": "^4.9",
+        "php": "~8.0",
+        "contao/core-bundle": "~4.9",
         "ext-openssl": "*"
     },
     "require-dev": {
-        "contao/test-case": "^4.9",
+        "contao/test-case": "~4.9",
         "phpunit/phpunit": "^9.5"
     },
     "autoload": {

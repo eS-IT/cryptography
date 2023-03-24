@@ -19,7 +19,7 @@ Die Software wird unter LGPL veröffentlicht. Details sind in der Datei `LICENSE
 ## Voraussetzungen
 
 - php: ^8.0
-- contao/core-bundle:^4.9
+- contao/core-bundle: ~4.9
 
 
 ## Installation
@@ -63,4 +63,5 @@ MyClass
 ```
 
 Beide Methoden nehmen als zweiten Parameter das Passwort entgegen. So können Werte mit unterschiedlichen Passwörtern
-verschlüsselt werden, falls nicht das in der `.env`-Datei hinterlegte Standardpasswort verwendet werden soll.
+verschlüsselt werden, falls nicht das in der `.env`-Datei hinterlegte Standardpasswort (`CRYPTOGRAPHY_SECRECT`)
+verwendet werden soll.
