@@ -19,7 +19,7 @@ Die Software wird unter LGPL veröffentlicht. Details sind in der Datei `LICENSE
 ## Voraussetzungen
 
 - php: ^8.0
-- contao/core-bundle: ~4.9
+- contao/core-bundle: ~4.9|^5.1
 
 
 ## Installation
