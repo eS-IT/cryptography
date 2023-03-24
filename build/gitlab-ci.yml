@@ -1,10 +1,8 @@
 stages:
-    - test__cto4.13_php8.0
-    - test__cto4.13_php8.1
-    - test__cto4.13_php8.2
+    - test_cto4.13
 
-test__cto4.13_php8.0:
-    stage: test
+test_cto4.13_php8.0:
+    stage: test_cto4.13
     except:
         - tags
     image: esit-projekt.de:5000/testsuite_cto4.13_php8.0
@@ -19,8 +17,8 @@ test__cto4.13_php8.0:
         - ./build/runtests.sh
     coverage: '/Methods: \d+\.\d+/'
 
-test__cto4.13_php8.1:
-    stage: test
+test_cto4.13_php8.1:
+    stage: test_cto4.13
     except:
         - tags
     image: esit-projekt.de:5000/testsuite_cto4.13_php8.1
@@ -35,8 +33,8 @@ test__cto4.13_php8.1:
         - ./build/runtests.sh
     coverage: '/Methods: \d+\.\d+/'
 
-test__cto4.13_php8.2:
-    stage: test
+test_cto4.13_php8.2:
+    stage: test_cto4.13
     except:
         - tags
     image: esit-projekt.de:5000/testsuite_cto4.13_php8.2
