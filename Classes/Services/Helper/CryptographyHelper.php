@@ -17,7 +17,6 @@ use Esit\Cryptography\Classes\Exceptions\InvalidArgumentException;
 
 class CryptographyHelper
 {
-
     /**
      * Passwort für die Verschlüsselung.
      * @var string
@@ -60,7 +59,7 @@ class CryptographyHelper
     {
         $secret = $secret ?: $this->secret;
 
-        return \hash('SHA256', $secret, false);
+        return (string)\hash('SHA256', $secret, false);
     }
 
 
@@ -71,7 +70,10 @@ class CryptographyHelper
      */
     private function getIv(): string
     {
-        return \random_bytes(\openssl_cipher_iv_length($this->cipher)) ?: '';
+        $length = \openssl_cipher_iv_length($this->cipher);
+        $length = $length > 0 ? $length : 16;
+
+        return (string)\random_bytes($length);
     }
 
 
@@ -86,7 +88,7 @@ class CryptographyHelper
     {
         $key        = $this->getKey($secret);
         $iv         = $this->getIv();
-        $ciphertext = \openssl_encrypt($data, $this->cipher, $key, \OPENSSL_RAW_DATA, $iv);
+        $ciphertext = (string)\openssl_encrypt($data, $this->cipher, $key, \OPENSSL_RAW_DATA, $iv);
 
         return \base64_encode($ciphertext) . ':' . \base64_encode($iv);
     }
@@ -102,11 +104,9 @@ class CryptographyHelper
     {
         $key       = $this->getKey($secret);
         $dataarray = \explode(':', $data);
-        $encrypted = \base64_decode($dataarray[0], true);
-        $iv        = \base64_decode($dataarray[1], true);
+        $encrypted = (string)\base64_decode($dataarray[0], true);
+        $iv        = (string)\base64_decode($dataarray[1], true);
 
-        if (false !== $encrypted && false !== $iv) {
-            return (string)\openssl_decrypt($encrypted, $this->cipher, $key, \OPENSSL_RAW_DATA, $iv);
-        }
+        return (string)\openssl_decrypt($encrypted, $this->cipher, $key, \OPENSSL_RAW_DATA, $iv);
     }
 }
