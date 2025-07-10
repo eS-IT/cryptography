@@ -59,7 +59,7 @@ class CryptographyHelper
     {
         $secret = $secret ?: $this->secret;
 
-        return (string)\hash('SHA256', $secret, false);
+        return \hash('SHA256', $secret);
     }
 
 
@@ -73,7 +73,7 @@ class CryptographyHelper
         $length = \openssl_cipher_iv_length($this->cipher);
         $length = $length > 0 ? $length : 16;
 
-        return (string)\random_bytes($length);
+        return \random_bytes($length);
     }
 
 

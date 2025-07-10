@@ -4,7 +4,14 @@ services:
         autowire: true
         autoconfigure: true
 
+    #Factories
+    Esit\Cryptography\Classes\Services\Factories\CryptographyFactory:
+        arguments:
+            $secret: "%env(default::CRYPTOGRAPHY_SECRECT)%"
+            $cipher: "%env(default::CRYPTOGRAPHY_CIPHER)%"
+
+    # Helper
     Esit\Cryptography\Classes\Services\Helper\CryptographyHelper:
         arguments:
-            - "%env(CRYPTOGRAPHY_SECRECT)%"
-            - "%env(CRYPTOGRAPHY_CIPHER)%"
+            $secret: "%env(default::CRYPTOGRAPHY_SECRECT)%" # Fallback
+            $cipher: "%env(default::CRYPTOGRAPHY_CIPHER)%"  # Fallback

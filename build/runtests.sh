@@ -159,7 +159,7 @@ fi
 
 
 ## PHPStan
-if [ -f "${toolFolder}/phpcpd" ]
+if [ -f "${toolFolder}/phpcpd" ] && [ -f ../../../vendor/autoload.php ]
 then
     myecho "Prüfe Code-Qualität mit PHPStan"
 

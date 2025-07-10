@@ -39,7 +39,7 @@ composer require esit/cryptography
 
 ## Einrichtung
 
-In die `.env`-Datei müssen zwei Werte eingetragen werden, das Passwort (`CRYPTOGRAPHY_SECRECT`) und die
+In die `.env`-Datei können zwei Werte eingetragen werden, das Passwort (`CRYPTOGRAPHY_SECRECT`) und die
 Verschlüsselungsmethode (`CRYPTOGRAPHY_CIPHER`). Ein Beispiel sieht so aus:
 
 ```dotenv
@@ -47,31 +47,41 @@ CRYPTOGRAPHY_SECRECT="bhjRHnqCpgjqW3w94t34FjLnXCWvrhpJqsvN7VNfH9qHPKsm"
 CRYPTOGRAPHY_CIPHER="aes-256-cbc"
 ```
 
+_Werden die Werte nicht angegeben, müssen sie der Factory beim Erstellen des `CryptographyHelper` übergeben werden!_
+
 
 ## Verwendung
 
 Der Helper kann einfach in eigene Klassen injected werden.
 
 ```php
+<?php
 MyClass
 {
 
-    private CryptographyHelper $cryptoHelper;
-
-    public function __construct(CryptographyHelper $cryptoHelper)
+    public function __construct(private CryptographyFactory $factory)
     {
-        $this->cryptoHelper = $cryptoHelper;
     }
 
     public function myTest(): void
     {
         $value      = 'Mein geheimer Teststring!';
+
+        // Verwendung der Werte aus der .env Datei.
+        $helper     = $factory->createCryptographyHelper();
         $encrypted  = $this->cryptoHelper->encrypt($value);
-        $decrypted  = $this->cryptoHelper->decrypt($encrypted); // $value === $decrypted
+        $decrypted  = $this->cryptoHelper->decrypt($encrypted);
+
+        // Verwendung der angegebenen Werte.
+        $helper     = $factory->createCryptographyHelper('password', 'aes-256-cbc');
+        $encrypted  = $this->cryptoHelper->encrypt($value);
+        $decrypted  = $this->cryptoHelper->decrypt($encrypted);
+
+        // Verwendung eines abweichenden Passworts.
+        $encrypted  = $this->cryptoHelper->encrypt($value, 'newPassword');
+        $decrypted  = $this->cryptoHelper->decrypt($encrypted, 'newPassword');
     }
 }
 ```
 
-Beide Methoden nehmen als zweiten Parameter das Passwort entgegen. So können Werte mit unterschiedlichen Passwörtern
-verschlüsselt werden, falls nicht das in der `.env`-Datei hinterlegte Standardpasswort (`CRYPTOGRAPHY_SECRECT`)
-verwendet werden soll.
+__Wird der `CryptographyHelper` direkt injected, müssen die Einstellunge in der .env Datei angegeben werden!__ Dieser Weg ist aber veraltet. Es dringend geraten, die Factory zu verwenden.
