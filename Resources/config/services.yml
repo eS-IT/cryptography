@@ -7,8 +7,8 @@ services:
     #Factories
     Esit\Cryptography\Classes\Services\Factories\CryptographyFactory:
         arguments:
-            $secret: "%env(default::CRYPTOGRAPHY_SECRECT)%"
-            $cipher: "%env(default::CRYPTOGRAPHY_CIPHER)%"
+            $secret: '%env(default:empty:CRYPTOGRAPHY_SECRECT)%'
+            $cipher: '%env(default:empty:CRYPTOGRAPHY_CIPHER)%'
 
     # Helper
     Esit\Cryptography\Classes\Services\Helper\CryptographyHelper:

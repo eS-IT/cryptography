@@ -18,8 +18,6 @@ use Esit\Cryptography\Classes\Services\Helper\CryptographyHelper;
 
 class CryptographyFactory
 {
-
-
     /**
      * @param string $secret
      * @param string $cipher
