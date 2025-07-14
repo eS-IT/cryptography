@@ -19,13 +19,25 @@ use Esit\Cryptography\Classes\Services\Helper\CryptographyHelper;
 class CryptographyFactory
 {
     /**
+     * @var string
+     */
+    private string $secret;
+
+
+    /**
+     * @var string
+     */
+    private string $cipher;
+
+
+    /**
      * @param string|null $secret
      * @param string|null $cipher
      */
-    public function __construct(
-        private readonly ?string $secret = '',
-        private readonly ?string $cipher = 'aes-256-cbc'
-    ) {
+    public function __construct(?string $secret = '', ?string $cipher = 'aes-256-cbc')
+    {
+        $this->secret = $secret ?: '';
+        $this->cipher = $cipher ?: 'aes-256-cbc';
     }
 
 
@@ -39,8 +51,8 @@ class CryptographyFactory
      */
     public function createCryptographyHelper(string $secret = '', string $cipher = ''): CryptographyHelper
     {
-        $secret = $secret ?? $this->secret;
-        $cipher = $cipher ?? $this->cipher;
+        $secret = $secret ?: $this->secret;
+        $cipher = $cipher ?: $this->cipher;
 
         return new CryptographyHelper($secret, $cipher);
     }
