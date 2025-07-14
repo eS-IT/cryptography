@@ -19,11 +19,13 @@ use Esit\Cryptography\Classes\Services\Helper\CryptographyHelper;
 class CryptographyFactory
 {
     /**
-     * @param string $secret
-     * @param string $cipher
+     * @param string|null $secret
+     * @param string|null $cipher
      */
-    public function __construct(private readonly string $secret = '', private readonly string $cipher = 'aes-256-cbc')
-    {
+    public function __construct(
+        private readonly ?string $secret = '',
+        private readonly ?string $cipher = 'aes-256-cbc'
+    ) {
     }
 
 

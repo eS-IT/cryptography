@@ -32,16 +32,16 @@ class CryptographyHelper
 
 
     /**
-     * @param string $secret
-     * @param string $cipher
+     * @param string|null $secret
+     * @param string|null $cipher
      */
-    public function __construct(string $secret, string $cipher)
+    public function __construct(?string $secret, ?string $cipher)
     {
-        if ('' === $secret) {
+        if (empty($secret)) {
             throw new InvalidArgumentException('secret could not be empty');
         }
 
-        if ('' === $cipher) {
+        if (empty($cipher)) {
             throw new InvalidArgumentException('cipher could not be empty');
         }
 
